@@ -26,3 +26,11 @@ def print_faixas_selecionadas(playlist):
 
     for p in playlist:
         print(f'\t[{p[1]}] {p[2]}')
+
+
+# albuns: (cod, descr, preco)
+def print_consulta_a(albuns):
+    print('Álbuns com preço de compra maior que a média de preços de compra de todos os álbuns: ')
+    for a in albuns:
+        print(f'[{a[0]}] {a[1]}\t\t\tR${a[2]}')
+    print('\n')

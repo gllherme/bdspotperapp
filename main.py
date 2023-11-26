@@ -1,5 +1,6 @@
 from criar_playlist import criar_playlist
 from gerenciar_playlists import gerenciar_playlists
+from consultas import consultas
 from help import main_help, error_msg
 
 
@@ -14,7 +15,7 @@ while True:
         case 'gerenciar':
             gerenciar_playlists()
         case 'consultas':
-            print('entrar no modo consultas')
+            consultas()
         case 'ajuda':
             main_help()
         case 'sair':

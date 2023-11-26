@@ -24,8 +24,22 @@ def get_playlist(cod):
 
 
 def get_faixas_from_playlist(cod_playlist):
-    cursor.execute('select f.cod_album, f.cod, f.descr, f.duracao '
-                   'from faixa f, faixa_playlist fp '
-                   'where fp.cod_playlist=? and f.cod=fp.cod_faixa', cod_playlist)
+    cursor.execute('SELECT f.cod_album, f.cod, f.descr, f.duracao '
+                   'FROM faixa f, faixa_playlist fp '
+                   'WHERE fp.cod_playlist=? AND f.cod=fp.cod_faixa', cod_playlist)
     faixas = list(map(tuple, cursor.fetchall()))
     return faixas
+
+
+# a. Listar os álbuns com preço de compra maior que a média de preços de compra de todos os álbuns.
+def get_consulta_a():
+    cursor.execute('SELECT cod, descr, preco FROM album '
+                   'GROUP BY cod, descr, preco '
+                   'HAVING avg(preco) > (SELECT avg(preco) FROM album)')
+    albuns = cursor.fetchall()
+    return albuns
+
+
+def get_consulta_b():
+    return
+
