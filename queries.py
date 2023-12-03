@@ -43,3 +43,26 @@ def get_consulta_a():
 def get_consulta_b():
     return
 
+
+def get_consulta_c():
+    cursor.execute("SELECT nome, "
+                   "(SELECT count(fc.cod_compositor) FROM faixa_compositor fc "
+                   "INNER JOIN faixa_playlist fp ON fp.cod_faixa=fc.cod_faixa "
+                   "WHERE fc.cod_compositor=cod) AS 'qtd' "
+                   "FROM compositor "
+                   "ORDER BY qtd DESC")
+
+    results = cursor.fetchall()
+    return results
+
+
+def get_consulta_d():
+    cursor.execute('SELECT p.nome, dbo.fn_Check_Composicao_Periodo_Playlist(p.cod), p.cod AS Checks FROM playlist p ')
+    results = cursor.fetchall()
+
+    filtered = [(r[2], r[0]) for r in results if r[1]]
+
+    return filtered
+
+
+get_consulta_d()

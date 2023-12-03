@@ -34,3 +34,19 @@ def print_consulta_a(albuns):
     for a in albuns:
         print(f'[{a[0]}] {a[1]}\t\t\tR${a[2]}')
     print('\n')
+
+
+def print_consulta_c(results):
+    table = [('Nome', 'Quantidade de Faixas'), *results]
+
+    print('Compositor com o maior número de faixas nas playlists existentes: ')
+    for r in table:
+        print('{: <20}\t\t{: <20}'.format(*r))
+    print('\n')
+
+
+def print_consulta_d(result):
+    print('Playlists cujas faixas (todas) tem tipo de composição "Concerto" e período "Barroco":')
+    for r in result:
+        print(f'[{r[0]}] {r[1]}')
+    print('\n')
