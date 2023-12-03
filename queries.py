@@ -63,6 +63,3 @@ def get_consulta_d():
     filtered = [(r[2], r[0]) for r in results if r[1]]
 
     return filtered
-
-
-get_consulta_d()
